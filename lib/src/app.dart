@@ -1,3 +1,5 @@
+import 'package:counter/src/global.dart';
+import 'package:counter/src/pages/home/home.dart';
 import 'package:counter/src/pages/splash.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +8,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: sharedPreferences.getBool('isLoggedIn') != null
+          ? const HomePage()
+          : const SplashScreen(),
     );
   }
 }

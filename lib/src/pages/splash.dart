@@ -56,9 +56,11 @@ class _SplashScreenState extends State<SplashScreen> {
       //cookie save
       setCookie(response);
       // ignore: use_build_context_synchronously
+      //sending to home page
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => const HomePage()),
           (route) => false);
+      sharedPreferences.setBool('isLoggedIn', true);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(decoded["message"])));
