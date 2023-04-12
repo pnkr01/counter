@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:counter/src/global.dart';
 import 'package:counter/src/model/student_model.dart';
+import 'package:counter/src/pages/attendence/attendnece.dart';
 import 'package:counter/src/pages/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as https;
@@ -83,16 +84,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       isLoading = false;
     });
-
-    // setState(() {
-    //   name = decoded["detail"][0]["name"];
-    //   regdNo = decoded["detail"][0]["enrollmentno"];
-    //   sec = decoded["detail"][0]["sectioncode"];
-    //   isLoading = false;
-    // });
-    // } catch (e) {
-    //   print(e.toString());
-    // }
   }
 
   @override
@@ -263,6 +254,22 @@ class _HomePageState extends State<HomePage> {
                           student.mName!,
                           style: const TextStyle(color: Colors.white),
                         )),
+                      ),
+                      const SizedBox(height: 8),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                            Radius.circular(14),
+                          ))),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const Attendencepage()));
+                          },
+                          child: const Text('Get your attendence'),
+                        ),
                       ),
                     ],
                   ),

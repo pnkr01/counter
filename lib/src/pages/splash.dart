@@ -16,18 +16,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final TextEditingController regdNo = TextEditingController();
   final TextEditingController password = TextEditingController();
-  // tryLoggingThisUser() async {
-  //   var response = await https.post(
-  //       Uri.parse('http://115.240.101.71:8282/CampusPortalSOA/login'),
-  //       body: json.encode({
-  //         "username": regdNo.text,
-  //         "password": password.text,
-  //         "MemberType": "S"
-  //       }));
-  //   var decoded = jsonDecode(response.body);
-  //   print(decoded);
-
-  // }
 
   setCookie(response) {
     String rawCookie = response.headers['set-cookie']!;
@@ -57,9 +45,9 @@ class _SplashScreenState extends State<SplashScreen> {
       setCookie(response);
       // ignore: use_build_context_synchronously
       //sending to home page
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => const HomePage()),
-          (route) => false);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
       sharedPreferences.setBool('isLoggedIn', true);
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
